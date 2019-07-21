@@ -210,30 +210,31 @@ Item {
         QtControls.Label {
             text: i18n("Date Format")
         }
-        QtControls.ComboBox {
-            id: dateFormat
-            QtLayouts.Layout.fillWidth: true
-            textRole: "key"
-            model: ListModel {
-                dynamicRoles: true
-                Component.onCompleted: {
-                append({ key: i18n("Text date"), value: 0 })
-                append({ key: i18n("Short date"), value: 1 })
-                append({ key: i18n("Long date"), value: 2 })
-                append({ key: i18n("ISO date"), value: 3 })
-                append({ key: i18n("Custom"), value: 4 })
+        QtLayouts.RowLayout {
+            spacing: 10
+
+            QtControls.ComboBox {
+                id: dateFormat
+                QtLayouts.Layout.fillWidth: true
+                textRole: "key"
+                model: ListModel {
+                    dynamicRoles: true
+                    Component.onCompleted: {
+                    append({ key: i18n("Text date"), value: 0 })
+                    append({ key: i18n("Short date"), value: 1 })
+                    append({ key: i18n("Long date"), value: 2 })
+                    append({ key: i18n("ISO date"), value: 3 })
+                    append({ key: i18n("Custom"), value: 4 })
+                    }
                 }
             }
-        }
 
-        QtControls.Label {
-            text: i18n("Date Format String")
-            visible: dateFormat.currentIndex == 4
-        }
-        QtControls.TextField {
-            id: dateFormatString
-            maximumLength: 24
-            visible: dateFormat.currentIndex == 4
+            QtControls.TextField {
+                id: dateFormatString
+                maximumLength: 24
+                QtLayouts.Layout.preferredWidth: 180
+                visible: dateFormat.currentIndex == 4
+            }
         }
         QtControls.Label {
             text: i18n("Background")
