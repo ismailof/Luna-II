@@ -3,3 +3,12 @@
 /build/
 /*.kdev4
 *~
+.gitignore
+.directory
+CMakeCache.txt
+CMakeFiles/
+*.plasmoid
+Makefile
+cmake_install.cmake
+org.kde.*
+*.sh
