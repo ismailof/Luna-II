@@ -19,7 +19,7 @@
 */
 
 import QtQuick 2.1
-import QtGraphicalEffects 1.12
+import Qt5Compat.GraphicalEffects as GE
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 
@@ -51,7 +51,7 @@ Item {
 
     PlasmaCore.SvgItem {
         id: lunaSvgItem
-        visible: false 
+        visible: false
 
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height)
@@ -62,7 +62,7 @@ Item {
         // Rotation to compensate the moon's image basic position to a north pole view
         // FIXME: Somehow it does not work when applied to OpacityMask or Blend
         transformOrigin: Item.Center
-        rotation: -lunarImageTweak  
+        rotation: -lunarImageTweak
     }
 
     Canvas {
@@ -196,7 +196,7 @@ Item {
     }
 
     // Shadow acts as a transparecy mask
-    OpacityMask {
+    GE.OpacityMask {
         anchors.fill: lunaSvgItem
         source: lunaSvgItem
         maskSource: shadow
@@ -206,7 +206,7 @@ Item {
     }
 
     // Shadow is printed on top of the moon image
-    Blend {
+    GE.Blend {
         anchors.fill: lunaSvgItem
         source: lunaSvgItem
         foregroundSource: shadow
