@@ -20,7 +20,7 @@
 
 import QtQuick 2.1
 import Qt5Compat.GraphicalEffects as GE
-import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.ksvg 1.0 as KSvg
 import org.kde.plasma.plasmoid 2.0
 
 import "../code/shadowcalcs.js" as ShadowCalcs
@@ -44,12 +44,7 @@ Item {
     // Degrees. 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
     property int theta: 45
 
-    PlasmaCore.Svg {
-        id: lunaSvg
-        imagePath: lunarImage === '' ? '' : plasmoid.file("data", lunarImage)
-    }
-
-    PlasmaCore.SvgItem {
+    KSvg.SvgItem {
         id: lunaSvgItem
         visible: false
 
@@ -57,7 +52,8 @@ Item {
         width: Math.min(parent.width, parent.height)
         height: Math.min(parent.width, parent.height)
 
-        svg: lunaSvg
+        // TODO: KF6. How to find and load the svg images??
+        imagePath: Plasmoid.file("data", lunarImage)
 
         // Rotation to compensate the moon's image basic position to a north pole view
         // FIXME: Somehow it does not work when applied to OpacityMask or Blend
