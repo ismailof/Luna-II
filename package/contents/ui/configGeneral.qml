@@ -18,7 +18,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.15 as QtLayouts
-import QtQuick.Dialogs 1.3 as QtDialogs
+import QtQuick.Dialogs as QtDialogs
 
 import org.kde.plasma.components 3.0 as PC3
 import org.kde.plasma.plasma5support 2.0 as P5Support
