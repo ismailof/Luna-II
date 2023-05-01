@@ -15,13 +15,13 @@
     along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.1
-import QtQuick.Controls 1.2 as QtControls
-import QtQuick.Layouts 1.2 as QtLayouts
-import QtQuick.Dialogs 1.0 as QtDialogs
+import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
+import QtQuick.Layouts 1.15 as QtLayouts
+import QtQuick.Dialogs 1.3 as QtDialogs
 
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components 3.0 as PC3
+import org.kde.plasma.plasma5support 2.0 as P5Support
 
 
 Item {
@@ -61,7 +61,7 @@ Item {
         id: imageChoices
     }
 
-    PlasmaCore.DataSource {
+    P5Support.DataSource {
         id: geoSource
         engine: "geolocation"
         connectedSources: ["location"]
@@ -86,15 +86,15 @@ Item {
         columns: 2
         rowSpacing: 15
 
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Preview")
         }
         QtLayouts.RowLayout {
             spacing: 20
 
-            PlasmaComponents.ToolButton {
+            PC3.ToolButton {
                 id: previousButton
-                iconSource: "go-previous"
+                icon.name: "go-previous"
                 enabled: cfg_lunarIndex > 0
                 onClicked: {
                     cfg_lunarIndex -= 1
@@ -116,9 +116,9 @@ Item {
               showCopernicus: cfg_showCopernicus
             }
 
-            PlasmaComponents.ToolButton {
+            PC3.ToolButton {
                 id: nextButton
-                iconSource: "go-next"
+                icon.name: "go-next"
                 enabled: cfg_lunarIndex < imageChoices.count-1
                 onClicked: {
                     cfg_lunarIndex += 1
@@ -128,17 +128,17 @@ Item {
             QtLayouts.ColumnLayout {
                 spacing: 20
 
-                QtControls.CheckBox {
+                QQC2.CheckBox {
                     id: showGrid
                     text: i18n("Show grid")
                 }
 
-                QtControls.CheckBox {
+                QQC2.CheckBox {
                     id: showTycho
                     text: i18n("Tycho")
                 }
 
-                QtControls.CheckBox {
+                QQC2.CheckBox {
                     id: showCopernicus
                     text: i18n("Copernicus")
                 }
@@ -146,7 +146,7 @@ Item {
             }
         }
 
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Disk Colour")
             visible: cfg_lunarImage === ""
         }
@@ -168,49 +168,48 @@ Item {
             }
         }
 
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Latitude")
         }
         QtLayouts.RowLayout {
             spacing: 20
 
-            QtControls.Label {
+            QQC2.Label {
                 id: lbl_latitude
                 text: Math.abs(latitude.value) + "º " + (latitude.value < 0 ? "S" : "N")
                 QtLayouts.Layout.preferredWidth: 40
                 horizontalAlignment: Text.AlignRight
             }
 
-            QtControls.Slider {
+            QQC2.Slider {
                 id: latitude
                 QtLayouts.Layout.fillWidth: true
-                minimumValue: -90.0
-                maximumValue: 90.0
+                from: -90.0
+                to: 90.0
                 stepSize: 5.0
-                tickmarksEnabled: true
                 enabled: !cfg_latitudeAuto
             }
         }
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("")
         }
         QtLayouts.RowLayout {
             spacing: 20
-            QtControls.CheckBox {
+            QQC2.CheckBox {
                 id: latitudeAuto
                 text: i18n("Use current latitude")
             }
-            QtControls.Label {
+            QQC2.Label {
                 id: lbl_place
                 QtLayouts.Layout.fillWidth: true
                 horizontalAlignment: Text.AlignRight
             }
         }
 
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Date Format")
         }
-        QtControls.ComboBox {
+        QQC2.ComboBox {
             id: dateFormat
             QtLayouts.Layout.fillWidth: true
             textRole: "key"
@@ -226,26 +225,26 @@ Item {
             }
         }
 
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Date Format String")
             visible: dateFormat.currentIndex == 4
         }
-        QtControls.TextField {
+        QQC2.TextField {
             id: dateFormatString
             maximumLength: 24
             visible: dateFormat.currentIndex == 4
         }
-        QtControls.Label {
+        QQC2.Label {
             text: i18n("Background")
         }
-        QtControls.CheckBox {
+        QQC2.CheckBox {
             id: showBackground
             text: i18n("Show background")
         }
-        QtControls.Label {
+        QQC2.Label {
             text: ""
         }
-        QtControls.CheckBox {
+        QQC2.CheckBox {
             id: transparentShadow
             text: i18n("Transparent shadow")
             enabled: cfg_lunarImage != ""

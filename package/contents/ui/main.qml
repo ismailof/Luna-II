@@ -18,12 +18,9 @@
 
 */
 
-import QtQuick 2.1
-import org.kde.plasma.core 2.0 as PlasmaCore
+import QtQuick 2.15
 import org.kde.plasma.plasmoid 2.0
-import QtQuick.Layouts 1.2 as QtLayouts
-import QtQuick.Controls 1.2 as QtControls
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import QtQuick.Layouts 1.15 as QtLayouts
 
 import "../code/phases.js" as Phases
 import "../code/lunacalc.js" as LunaCalc
@@ -49,7 +46,7 @@ Item {
     property string lunarImage: ''
     property int lunarImageTweak: 0
 
-    Plasmoid.backgroundHints: showBackground ? "DefaultBackground" : "NoBackground"
+    Plasmoid.backgroundHints: showBackground ? Plasmoid.DefaultBackground : Plasmoid.NoBackground
     Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
 
     Plasmoid.icon: ""
