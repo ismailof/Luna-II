@@ -101,11 +101,18 @@ Item {
             context.globalAlpha = 0.9
             context.fillStyle = '#000000'
 
+            //console.log("Angle: " + theta.toString())
+
+            var ct = Math.cos(theta/180*Math.PI)
+            var radius = ShadowCalcs.setup(Math.floor(shadow.height/2))
+
+            //console.log("radius: " + radius.toString())
+
             function radians(deg) {
                 return deg / 180.0 * Math.PI;
             }
 
-            function marker(latitude,longitude) {
+            function marker(latitude, longitude) {
               var dy = radius * Math.sin(radians(latitude))
               var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude))
               //console.log("dx: " + dx.toString())
@@ -141,13 +148,6 @@ Item {
               }
               context.stroke()
             }
-
-            //console.log("Angle: " + theta.toString())
-
-            var ct = Math.cos(theta/180*Math.PI)
-            var radius = ShadowCalcs.setup(Math.floor(shadow.height/2))
-
-            //console.log("radius: " + radius.toString())
 
             context.translate(radius,radius)
 
