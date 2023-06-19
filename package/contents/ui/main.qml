@@ -25,7 +25,7 @@ import QtQuick.Layouts 1.15 as QtLayouts
 import "../code/phases.js" as Phases
 import "../code/lunacalc.js" as LunaCalc
 
-Item {
+PlasmoidItem {
     id: main
     property int minimumWidth
     property int minimumHeight
@@ -46,14 +46,14 @@ Item {
     property string lunarImage: ''
     property int lunarImageTweak: 0
 
-    Plasmoid.backgroundHints: showBackground ? Plasmoid.DefaultBackground : Plasmoid.NoBackground
-    Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
-
+    Plasmoid.backgroundHints: showBackground ? "DefaultBackground" : "NoBackground"
     Plasmoid.icon: ""
-    Plasmoid.toolTipMainText: currentPhase.text
-    Plasmoid.toolTipSubText: currentPhase.subText
 
-    Plasmoid.compactRepresentation: Item {
+    preferredRepresentation: compactRepresentation
+    toolTipMainText: currentPhase.text
+    toolTipSubText: currentPhase.subText
+
+    compactRepresentation: Item {
         id: compact
 
         property int latitude: main.latitude
@@ -101,13 +101,13 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: plasmoid.expanded = !plasmoid.expanded
+                onClicked: main.expanded = !main.expanded
             }
         }
 
     }
 
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         id: full
 
         QtLayouts.Layout.preferredWidth: lunaWidget.QtLayouts.Layout.minimumWidth
