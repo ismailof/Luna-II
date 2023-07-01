@@ -1,5 +1,6 @@
 {
     "KPlugin": {
+        "KPackageStructure": "Plasma/Applet",
         "Authors": [
             {
                 "Email": "dxtwjb@gmail.com",
