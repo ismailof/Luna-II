@@ -53,7 +53,7 @@ Item {
         height: Math.min(parent.width, parent.height)
 
         // TODO: KF6. How to find and load the svg images??
-        imagePath: Plasmoid.file("data", lunarImage)
+        imagePath: Qt.resolvedUrl(`../data/${lunarImage}`)
 
         // Rotation to compensate the moon's image basic position to a north pole view
         // FIXME: Somehow it does not work when applied to OpacityMask or Blend
